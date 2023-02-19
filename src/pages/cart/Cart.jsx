@@ -7,9 +7,12 @@ import {
   styled,
   IconButton,
   Badge,
+  Typography,
+  Divider,
+  Stack,
 } from "@mui/material";
 import "./Cart.css";
-import { Add, Remove } from "@mui/icons-material";
+import { Add, Delete, Remove } from "@mui/icons-material";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -41,8 +44,41 @@ const Cart = () => {
 
         <div className="price">$100</div>
 
-        <Button variant="text" color="error">
+        <Button
+          sx={{ display: { xs: "none", md: "inline-flex" } }}
+          variant="text"
+          color="error"
+        >
           delete
+        </Button>
+
+        <IconButton
+          sx={{ color: "#ef5350", display: { xs: "inline-flex", md: "none" } }}
+          onClick={() => {}}
+        >
+          <Delete />
+        </IconButton>
+      </Paper>
+
+      <Paper  sx={{ width: "200px", mx: "auto", mt: "60px" }}>
+        <Typography align="center" p={2} variant="h6">
+          Cart Summary
+        </Typography>
+
+        <Divider />
+
+        <Stack
+          sx={{ justifyContent: "space-between", p: 1.2 }}
+          direction={"row"}
+        >
+          <Typography variant="body1">Subtotal</Typography>
+          <Typography variant="body1">$100</Typography>
+        </Stack>
+
+        <Divider />
+
+        <Button fullWidth color="primary" variant="contained">
+          CHECKOUT
         </Button>
       </Paper>
     </Box>
