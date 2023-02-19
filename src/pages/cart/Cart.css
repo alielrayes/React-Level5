@@ -1,0 +1,63 @@
+
+.item-container {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+
+
+  border-top: 2px solid rgb(109, 176, 221);
+
+  width: 500px;
+  margin: 50px auto;
+
+  color: rgb(0, 0, 0) !important;
+  background-color: rgb(255, 255, 255) !important;
+}
+
+.img-title-parent {
+  display: flex;
+  align-items: center;
+  width: 33%;
+}
+
+.img-title-parent img {
+  border-radius: 10px;
+  width: 75px;
+  height: 70px;
+  margin: 4px 0 1px 0;
+}
+
+.img-title-parent p {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+
+
+ 
+
+.price {
+
+  border-radius: 4px;
+  color: #454545;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.confirm-buy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.confirm-buy p {
+  margin-left: 20px;
+  color: #fff;
+  text-align: center;
+
+  font-size: 20px;
+  font-weight: 500;
+}
