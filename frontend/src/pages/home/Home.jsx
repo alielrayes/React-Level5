@@ -1,7 +1,7 @@
 import { Box } from "@mui/system";
 import "./Home.css";
 import React from "react";
-import { Paper, Typography, IconButton, Button, Stack } from "@mui/material";
+import { Paper, Typography, IconButton, Button, Stack, CircularProgress } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import { styled, useTheme } from "@mui/material/styles";
 import Card from "@mui/material/Card";
@@ -11,35 +11,41 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import { useGetproductsByNameQuery } from '../../Redux/productsApi'
 
-const receviedDateFromAPI = [{}, {}, {}, {}];
+ 
 
 const Home = () => {
   const theme = useTheme();
   const { data, error, isLoading } = useGetproductsByNameQuery()
 
 
-console.log(data)
+if (isLoading) {
+  return(
+    <Box sx={{ display: 'flex' }}>
+    <CircularProgress />
+  </Box>
+  )
+}
 
 
 
+if (data) {
   return (
     <Stack
       direction={"row"}
       sx={{ flexWrap: "wrap", justifyContent: "center" }}
     >
-      {receviedDateFromAPI.map((item) => {
+      {data.map((item) => {
         return (
-          <Card sx={{ maxWidth: 277, mb: 6, mx: 2 }}>
+          <Card className="card" key={item.id} sx={{ maxWidth: 277, mb: 6, mx: 2 }}>
             <CardMedia
               component="img"
-              height="194"
-              image="/static/images/cards/paella.jpg"
+              height="277"
+              image={item.imageLink}
               alt="Paella dish"
             />
             <CardContent>
               <Typography variant="body2" color="text.secondary">
-                This impressive paella is a perfect party dish and a fun meal to
-                cook together with your guests.
+                {item.description}
               </Typography>
             </CardContent>
             <CardActions
@@ -59,7 +65,7 @@ console.log(data)
                 variant="body1"
                 color={theme.palette.error.light}
               >
-                $100
+                ${item.price}
               </Typography>
             </CardActions>
           </Card>
@@ -67,6 +73,7 @@ console.log(data)
       })}
     </Stack>
   );
+}
 };
 
 export default Home;

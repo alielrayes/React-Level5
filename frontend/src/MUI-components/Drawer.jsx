@@ -16,11 +16,9 @@ import ListItemText from "@mui/material/ListItemText";
 import {
   Brightness4,
   Brightness7,
-  Create,
+
   Home,
-  Logout,
-  Person2,
-  Settings,
+
   ShoppingCart,
 } from "@mui/icons-material";
 
@@ -108,6 +106,7 @@ const Drawerr = ({
         {myList.map((item) => {
           return (
             <ListItem
+            key={item.path}
               sx={{
                 bgcolor:
                   currentLocation.pathname === item.path
