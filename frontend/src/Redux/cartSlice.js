@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// use "useSelector" to get the array
 const initialState = {
   selectedProducts: [
-
+  
   ],
 };
 
@@ -13,7 +14,13 @@ export const counterSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
   // action.payload => product From API => القيمة التى بداخل الاقواس
-      console.log("doneeeeeeeeeeee")
+
+  const productWithQuantity = {...action.payload, "quantity": 1}
+  state.selectedProducts.push(productWithQuantity)
+  
+  
+  
+  console.log("doneeeeeeeeeeee")
     },
 
     increaseQuantity: (state, action) => {
