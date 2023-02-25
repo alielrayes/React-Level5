@@ -1,19 +1,39 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  selectedProducts: [],
+  selectedProducts: [
+
+  ],
 };
 
 export const counterSlice = createSlice({
   name: "cart",
   initialState,
+    // action.payload => product From API => القيمة التى بداخل الاقواس
   reducers: {
-    incrementByAmount: (state, action) => {
-      // state.value += action.payload
+    addToCart: (state, action) => {
+  // action.payload => product From API => القيمة التى بداخل الاقواس
+      console.log("doneeeeeeeeeeee")
+    },
+
+    increaseQuantity: (state, action) => {
+      // action.payload => product From user 
+      console.log("doneeeeeeeeeeee")
+    },
+
+    decreaseQuantity: (state, action) => {
+  // action.payload => product From user 
+      console.log("doneeeeeeeeeeee")
+    },
+
+    deleteProduct: (state, action) => {
+  // action.payload => product From user 
+      console.log("doneeeeeeeeeeee")
     },
   },
 });
 
-export const { incrementByAmount } = counterSlice.actions;
+//  دائماً هتنساهااااااااااااااااااااااااااااااااااااااع
+export const {deleteProduct, addToCart, increaseQuantity, decreaseQuantity } = counterSlice.actions;
 
 export default counterSlice.reducer;

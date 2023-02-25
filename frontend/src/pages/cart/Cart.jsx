@@ -14,6 +14,7 @@ import {
 import "./Cart.css";
 import { Add, Delete, Remove } from "@mui/icons-material";
 import { useSelector, useDispatch } from "react-redux";
+import { decreaseQuantity, deleteProduct, increaseQuantity } from "Redux/cartSlice";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -25,14 +26,14 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const Cart = () => {
   // @ts-ignore
   const { selectedProducts } = useSelector((state) => state.carttt);
-
+  const dispatch = useDispatch()
   console.log(selectedProducts);
 
   return (
     <Box>
       {selectedProducts.map((item) => {
         return (
-          <Paper dir="rtl" className="item-container">
+          <Paper key={item.id} dir="rtl" className="item-container">
             <div className="img-title-parent">
               <img src={item.imageLink} alt="" />
               <p className="product-name">{item.productName}</p>
@@ -41,7 +42,9 @@ const Cart = () => {
             <div style={{ display: "flex", alignItems: "center" }}>
               <IconButton
                 sx={{ color: "#1976d2", ml: "10px" }}
-                onClick={() => {}}
+                onClick={() => {
+                  dispatch(increaseQuantity(item))
+                }}
               >
                 <Add />
               </IconButton>
@@ -50,7 +53,9 @@ const Cart = () => {
 
               <IconButton
                 sx={{ color: "#1976d2", mr: "10px" }}
-                onClick={() => {}}
+                onClick={() => {
+                  dispatch(decreaseQuantity(item))
+                }}
               >
                 <Remove />
               </IconButton>
@@ -62,6 +67,9 @@ const Cart = () => {
               sx={{ display: { xs: "none", md: "inline-flex" } }}
               variant="text"
               color="error"
+              onClick={() => {
+                dispatch(deleteProduct(item))
+              }}
             >
               delete
             </Button>
@@ -71,7 +79,9 @@ const Cart = () => {
                 color: "#ef5350",
                 display: { xs: "inline-flex", md: "none" },
               }}
-              onClick={() => {}}
+              onClick={() => {
+                dispatch(deleteProduct(item))
+              }}
             >
               <Delete />
             </IconButton>

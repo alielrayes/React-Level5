@@ -10,13 +10,16 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import { useGetproductsByNameQuery } from '../../Redux/productsApi'
+import { useDispatch } from "react-redux";
+import { addToCart } from "Redux/cartSlice";
 
  
 
 const Home = () => {
   const theme = useTheme();
   const { data, error, isLoading } = useGetproductsByNameQuery()
-
+  const dispatch = useDispatch()
+  
 
 if (isLoading) {
   return(
@@ -56,6 +59,9 @@ if (data) {
                 sx={{ textTransform: "capitalize", p: 1, lineHeight: 1.1 }}
                 variant="contained"
                 color="primary"
+                onClick={() => {
+                  dispatch(addToCart(item))
+                }}
               >
                 Add to cart
               </Button>
