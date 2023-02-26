@@ -2,7 +2,6 @@ import { Box } from "@mui/system";
 import "./Home.css";
 import React from "react";
 import {
-  Paper,
   Typography,
   IconButton,
   Button,
@@ -10,10 +9,10 @@ import {
   CircularProgress,
   Badge,
 } from "@mui/material";
-import { Add, Close, Remove } from "@mui/icons-material";
+import { Add, Remove } from "@mui/icons-material";
 import { styled, useTheme } from "@mui/material/styles";
 import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
+
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
@@ -29,24 +28,35 @@ const Home = () => {
   const theme = useTheme();
   const { data, error, isLoading } = useGetproductsByNameQuery();
   const dispatch = useDispatch();
-  // @ts-ignore
-  const { selectedProducts,selectedProductsID } = useSelector((state) => state.carttt);
+ 
+  const { selectedProducts, selectedProductsID } = useSelector(
+    // @ts-ignore
+    (state) => state.carttt
+  );
 
+  const productQuantity = (itemAPI) => {
+    const myProduct = selectedProducts.find((itemUser) => {
+      return itemUser.id === itemAPI.id;
+    });
 
-const productQuantity = () => {
-  const myProduct = selectedProducts.find((item) => {
-    return dddddddddddddddddd
-  })
+    return myProduct.quantity;
+  };
 
-  return myProduct.quantity
-}
-
-
-  
   if (isLoading) {
     return (
       <Box sx={{ display: "flex" }}>
         <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box sx={{ display: "flex" }}>
+        <Typography variant="h1" color="error">
+          {" "}
+          ERROR{" "}
+        </Typography>
       </Box>
     );
   }
@@ -94,7 +104,10 @@ const productQuantity = () => {
                       <Add fontSize="small" />
                     </IconButton>
 
-                    <StyledBadge badgeContent={productQuantity()} color="primary" />
+                    <StyledBadge
+                      badgeContent={productQuantity(item)}
+                      color="primary"
+                    />
 
                     <IconButton
                       color="primary"
