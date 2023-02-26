@@ -31,9 +31,12 @@ const Cart = () => {
   const dispatch = useDispatch();
   console.log(selectedProducts);
 
+  let Subtotal = 0;
+
   return (
     <Box>
       {selectedProducts.map((item) => {
+        Subtotal += Number(item.price) * Number(item.quantity);
         return (
           <Paper key={item.id} dir="rtl" className="item-container">
             <div className="img-title-parent">
@@ -63,7 +66,9 @@ const Cart = () => {
               </IconButton>
             </div>
 
-            <div className="price">${item.price}</div>
+            <div className="price">
+              ${Number(item.price) * Number(item.quantity)}
+            </div>
 
             <Button
               sx={{ display: { xs: "none", md: "inline-flex" } }}
@@ -103,7 +108,7 @@ const Cart = () => {
           direction={"row"}
         >
           <Typography variant="body1">Subtotal</Typography>
-          <Typography variant="body1">$100</Typography>
+          <Typography variant="body1">${Subtotal}</Typography>
         </Stack>
 
         <Divider />
