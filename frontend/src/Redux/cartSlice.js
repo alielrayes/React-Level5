@@ -38,6 +38,11 @@ export const counterSlice = createSlice({
       });
 
       incresdedProuct.quantity += 1;
+
+      localStorage.setItem(
+        "selectedProducts",
+        JSON.stringify(state.selectedProducts)
+      );
     },
 
     decreaseQuantity: (state, action) => {
@@ -59,17 +64,41 @@ export const counterSlice = createSlice({
 
         state.selectedProducts = newArr;
         state.selectedProductsID = newArr2;
+
+        localStorage.setItem(
+          "selectedProductsID",
+          JSON.stringify(state.selectedProductsID)
+        );
       }
+
+      localStorage.setItem(
+        "selectedProducts",
+        JSON.stringify(state.selectedProducts)
+      );
     },
 
     deleteProduct: (state, action) => {
-      // action.payload => product From user
       // delete the selected product
       const newArr = state.selectedProducts.filter((item) => {
         return item.id !== action.payload.id;
       });
 
+      const newArr2 = state.selectedProductsID.filter((item) => {
+        return item !== action.payload.id;
+      });
+
       state.selectedProducts = newArr;
+      state.selectedProductsID = newArr2;
+
+      localStorage.setItem(
+        "selectedProductsID",
+        JSON.stringify(state.selectedProductsID)
+      );
+
+      localStorage.setItem(
+        "selectedProducts",
+        JSON.stringify(state.selectedProducts)
+      );
     },
   },
 });
