@@ -40,7 +40,12 @@ export const counterSlice = createSlice({
           return item.id !== action.payload.id;
         });
 
+        const newArr2 = state.selectedProductsID.filter((item) => {
+          return  item   !== action.payload.id
+        });
+
         state.selectedProducts = newArr;
+        state.selectedProductsID = newArr2
       }
     },
 

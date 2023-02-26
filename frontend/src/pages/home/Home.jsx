@@ -33,6 +33,15 @@ const Home = () => {
   const { selectedProducts,selectedProductsID } = useSelector((state) => state.carttt);
 
 
+const productQuantity = () => {
+  const myProduct = selectedProducts.find((item) => {
+    return dddddddddddddddddd
+  })
+
+  return myProduct.quantity
+}
+
+
   
   if (isLoading) {
     return (
@@ -85,7 +94,7 @@ const Home = () => {
                       <Add fontSize="small" />
                     </IconButton>
 
-                    <StyledBadge badgeContent={selectedProducts[index].quantity} color="primary" />
+                    <StyledBadge badgeContent={productQuantity()} color="primary" />
 
                     <IconButton
                       color="primary"
