@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // use "useSelector" to get the array
 const initialState = {
   selectedProducts: [],
+  selectedProductsID: [],
 };
 
 export const counterSlice = createSlice({
@@ -14,6 +15,7 @@ export const counterSlice = createSlice({
       // action.payload => product From API => القيمة التى بداخل الاقواس
       const productWithQuantity = { ...action.payload, quantity: 1 };
       state.selectedProducts.push(productWithQuantity);
+      state.selectedProductsID.push(action.payload.id );
     },
 
     increaseQuantity: (state, action) => {

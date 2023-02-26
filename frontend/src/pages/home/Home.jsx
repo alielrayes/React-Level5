@@ -29,7 +29,8 @@ const Home = () => {
   const theme = useTheme();
   const { data, error, isLoading } = useGetproductsByNameQuery();
   const dispatch = useDispatch();
-  const { selectedProducts } = useSelector((state) => state.carttt);
+  // @ts-ignore
+  const { selectedProducts,selectedProductsID } = useSelector((state) => state.carttt);
 
 
   
@@ -47,7 +48,7 @@ const Home = () => {
         direction={"row"}
         sx={{ flexWrap: "wrap", justifyContent: "center" }}
       >
-        {data.map((item) => {
+        {data.map((item, index) => {
           return (
             <Card
               className="card"
@@ -69,7 +70,7 @@ const Home = () => {
                 sx={{ justifyContent: "space-between" }}
                 disableSpacing
               >
-                {selectedProducts.includes(item) ? (
+                {selectedProductsID.includes(item.id) ? (
                   <div
                     dir="rtl"
                     style={{ display: "flex", alignItems: "center" }}
@@ -84,7 +85,7 @@ const Home = () => {
                       <Add fontSize="small" />
                     </IconButton>
 
-                    <StyledBadge badgeContent={1} color="primary" />
+                    <StyledBadge badgeContent={selectedProducts[index].quantity} color="primary" />
 
                     <IconButton
                       color="primary"
