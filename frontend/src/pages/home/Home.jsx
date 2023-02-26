@@ -28,7 +28,7 @@ const Home = () => {
   const theme = useTheme();
   const { data, error, isLoading } = useGetproductsByNameQuery();
   const dispatch = useDispatch();
- 
+
   const { selectedProducts, selectedProductsID } = useSelector(
     // @ts-ignore
     (state) => state.carttt

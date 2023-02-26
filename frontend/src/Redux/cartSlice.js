@@ -15,7 +15,10 @@ export const counterSlice = createSlice({
       // action.payload => product From API => القيمة التى بداخل الاقواس
       const productWithQuantity = { ...action.payload, quantity: 1 };
       state.selectedProducts.push(productWithQuantity);
-      state.selectedProductsID.push(action.payload.id );
+      state.selectedProductsID.push(action.payload.id);
+
+      localStorage.setItem("selectedProducts", fffffffffffffff)
+      localStorage.setItem("selectedProductsID", fffffffffffffff)
     },
 
     increaseQuantity: (state, action) => {
@@ -41,11 +44,11 @@ export const counterSlice = createSlice({
         });
 
         const newArr2 = state.selectedProductsID.filter((item) => {
-          return  item   !== action.payload.id
+          return item !== action.payload.id;
         });
 
         state.selectedProducts = newArr;
-        state.selectedProductsID = newArr2
+        state.selectedProductsID = newArr2;
       }
     },
 

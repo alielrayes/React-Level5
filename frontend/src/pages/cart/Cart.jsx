@@ -1,9 +1,7 @@
 import {
   Box,
   Button,
-
   Paper,
-
   styled,
   IconButton,
   Badge,
@@ -14,7 +12,11 @@ import {
 import "./Cart.css";
 import { Add, Delete, Remove } from "@mui/icons-material";
 import { useSelector, useDispatch } from "react-redux";
-import { decreaseQuantity, deleteProduct, increaseQuantity } from "Redux/cartSlice";
+import {
+  decreaseQuantity,
+  deleteProduct,
+  increaseQuantity,
+} from "Redux/cartSlice";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -26,7 +28,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const Cart = () => {
   // @ts-ignore
   const { selectedProducts } = useSelector((state) => state.carttt);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   console.log(selectedProducts);
 
   return (
@@ -43,7 +45,7 @@ const Cart = () => {
               <IconButton
                 sx={{ color: "#1976d2", ml: "10px" }}
                 onClick={() => {
-                  dispatch(increaseQuantity(item))
+                  dispatch(increaseQuantity(item));
                 }}
               >
                 <Add />
@@ -54,7 +56,7 @@ const Cart = () => {
               <IconButton
                 sx={{ color: "#1976d2", mr: "10px" }}
                 onClick={() => {
-                  dispatch(decreaseQuantity(item))
+                  dispatch(decreaseQuantity(item));
                 }}
               >
                 <Remove />
@@ -68,7 +70,7 @@ const Cart = () => {
               variant="text"
               color="error"
               onClick={() => {
-                dispatch(deleteProduct(item))
+                dispatch(deleteProduct(item));
               }}
             >
               delete
@@ -80,7 +82,7 @@ const Cart = () => {
                 display: { xs: "inline-flex", md: "none" },
               }}
               onClick={() => {
-                dispatch(deleteProduct(item))
+                dispatch(deleteProduct(item));
               }}
             >
               <Delete />
