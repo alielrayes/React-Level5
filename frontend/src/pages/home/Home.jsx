@@ -27,6 +27,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const Home = () => {
   const theme = useTheme();
+    // data =>ALL products
   const { data, error, isLoading } = useGetproductsByNameQuery();
   const dispatch = useDispatch();
   const navitage = useNavigate()
