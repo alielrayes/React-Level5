@@ -19,6 +19,7 @@ import CardActions from "@mui/material/CardActions";
 import { useGetproductsByNameQuery } from "../../Redux/productsApi";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, decreaseQuantity, increaseQuantity } from "Redux/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {},
@@ -28,6 +29,7 @@ const Home = () => {
   const theme = useTheme();
   const { data, error, isLoading } = useGetproductsByNameQuery();
   const dispatch = useDispatch();
+  const navitage = useNavigate()
 
   const { selectedProducts, selectedProductsID } = useSelector(
     // @ts-ignore
@@ -60,7 +62,7 @@ const Home = () => {
       </Box>
     );
   }
-
+console.log(data)
   if (data) {
     return (
       <Stack
@@ -79,6 +81,9 @@ const Home = () => {
                 height="277"
                 image={item.imageLink}
                 alt="Paella dish"
+                onClick={() => {
+                  navitage(`product-details/${item.id}`)
+                }}
               />
               <CardContent>
                 <Typography variant="body2" color="text.secondary">
