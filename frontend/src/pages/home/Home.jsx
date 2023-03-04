@@ -27,10 +27,10 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const Home = () => {
   const theme = useTheme();
-    // data =>ALL products
+  // data =>ALL products
   const { data, error, isLoading } = useGetproductsByNameQuery();
   const dispatch = useDispatch();
-  const navitage = useNavigate()
+  const navitage = useNavigate();
 
   const { selectedProducts, selectedProductsID } = useSelector(
     // @ts-ignore
@@ -63,7 +63,7 @@ const Home = () => {
       </Box>
     );
   }
-console.log(data)
+  console.log(data);
   if (data) {
     return (
       <Stack
@@ -80,10 +80,10 @@ console.log(data)
               <CardMedia
                 component="img"
                 height="277"
-                image={item.imageLink}
+                image={item.imageLink[0]}
                 alt="Paella dish"
                 onClick={() => {
-                  navitage(`product-details/${item.id}`)
+                  navitage(`product-details/${item.id}`);
                 }}
               />
               <CardContent>
