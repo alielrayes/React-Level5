@@ -9,7 +9,7 @@ import {
   CircularProgress,
   Badge,
 } from "@mui/material";
-import { Add, Remove } from "@mui/icons-material";
+import { Add, Remove, ShoppingCart } from "@mui/icons-material";
 import { styled, useTheme } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 
@@ -134,7 +134,8 @@ const Home = () => {
                       dispatch(addToCart(item));
                     }}
                   >
-                    Add to cart
+                    <ShoppingCart sx={{ fontSize: "18px", mr: 1 }} /> Add to
+                    cart
                   </Button>
                 )}
 
