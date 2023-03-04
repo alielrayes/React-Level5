@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "dev": "node index.js",
+    "build": "npm i"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2"
