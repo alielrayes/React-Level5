@@ -81,12 +81,15 @@ const ProductDetails = () => {
 
           <div className="box">
             <div className="row">
-              <h2>{data.productName}</h2>
-              <span>${data.price}</span>
+              <h2 style={{ fontSize: "29px" }}>{data.productName}</h2>
+              <span style={{ fontSize: "19px" }}>${data.price}</span>
             </div>
             {/* <Colors colors={data.colors} /> */}
 
-            <p>{data.description}</p>
+            <p style={{ fontSize: "16px" }}>
+              Lorem ipsum, dolor sit amet consectetur adipisicing
+            </p>
+            <p style={{ fontSize: "17px" }}>{data.description}</p>
 
             <DetailsThumb
               images={data.imageLink}
